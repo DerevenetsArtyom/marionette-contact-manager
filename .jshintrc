@@ -6,6 +6,7 @@
     "Backbone": false,
     "$": false,
     "_": false,
-    "console": false
+    "console": false,
+    "Marionette": false,
   }
 }
