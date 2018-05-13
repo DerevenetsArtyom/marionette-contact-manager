@@ -57,8 +57,9 @@ ContactManager.Controller = Marionette.Controller.extend({
             });
 
             this.listenTo(editContactForm, 'form:submitted', function(attrs) {
-                contact.set(attrs);
-                this._router.navigate('contacts', true);
+                contact.save(attrs);
+                this.showContacts();
+                this._router.navigate('contacts');
             });
 
             ContactManager.mainRegion.show(editContactForm);
