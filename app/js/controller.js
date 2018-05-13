@@ -13,6 +13,8 @@ ContactManager.Controller = Marionette.Controller.extend({
         this.listenTo(contactsView, 'addContact:clicked', this.newContact);
 
         ContactManager.mainRegion.show(contactsView);
+
+        this._router.navigate('contacts');
     },
 
     newContact: function() {
@@ -27,7 +29,12 @@ ContactManager.Controller = Marionette.Controller.extend({
             this.showContacts();
         });
 
+        // navigate to contact was before 'this.showContacts'
+        this.listenTo(newContactForm, 'form:canceled', this.showContacts);
+
         ContactManager.mainRegion.show(newContactForm);
+
+        this._router.navigate('contacts/new');
     },
 
     editContact: function(id) {
@@ -45,8 +52,10 @@ ContactManager.Controller = Marionette.Controller.extend({
             });
 
             ContactManager.mainRegion.show(editContactForm);
+
+            this._router.navigate('contacts/edit/' + id);
         } else {
-            this._router.navigate('contacts', true);
+            this.showContacts();
         }
     }
 });
