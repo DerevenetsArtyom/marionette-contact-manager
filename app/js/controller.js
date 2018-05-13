@@ -11,8 +11,11 @@ ContactManager.Controller = Marionette.Controller.extend({
         });
 
         this.listenTo(contactsView, 'addContact:clicked', this.newContact);
-        this.listenTo(contactsView, 'itemView:delete:clicked', function () {
-            this._contacts.remove(contactsView.model)
+        this.listenTo(contactsView, 'itemView:delete:clicked', function (contactView) {
+            this._contacts.remove(contactView.model)
+        });
+        this.listenTo(contactsView, 'itemView:edit:clicked', function (contactView) {
+            this.editContact(contactView.model.id)
         });
 
         ContactManager.mainRegion.show(contactsView);
@@ -28,11 +31,9 @@ ContactManager.Controller = Marionette.Controller.extend({
         this.listenTo(newContactForm, 'form:submitted', function(attrs) {
             attrs.id = this._contacts.isEmpty() ? 1 : (_.max(this._contacts.pluck('id')) + 1);
             this._contacts.add(attrs);
-            this._router.navigate('contacts');
             this.showContacts();
         });
 
-        // navigate to contact was before 'this.showContacts'
         this.listenTo(newContactForm, 'form:canceled', this.showContacts);
 
         ContactManager.mainRegion.show(newContactForm);

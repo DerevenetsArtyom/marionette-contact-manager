@@ -4,6 +4,7 @@ ContactManager.Views.Contact = Marionette.View.extend({
     template: '#tpl-contact',
 
     triggers:{
-        'click .delete-contract': 'delete:clicked'
+        'click .delete-contract': 'delete:clicked',
+        'click .edit-contract': 'edit:clicked'
     }
 });
