@@ -1,14 +1,18 @@
 ContactManager.Views.ContactForm = Marionette.View.extend({
     template: '#tpl-new-contact',
 
-    events: {
-        'submit .contract-form': 'onFormSubmit'
-    },
-
     ui: {
         nameInput: '.contact-name-input',
         telInput: '.contact-tel-input',
         emailInput: '.contact-email-input'
+    },
+
+    events: {
+        'submit .contract-form': 'onFormSubmit'
+    },
+
+    triggers: {
+        'click .form-cancel-btn': 'form:canceled'
     },
 
     serializeData: function () {
