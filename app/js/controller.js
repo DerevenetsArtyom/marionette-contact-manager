@@ -10,6 +10,8 @@ ContactManager.Controller = Marionette.Controller.extend({
           collection: this._contacts
         });
 
+        this.listenTo(contactsView, 'addContact:clicked', this.newContact);
+
         ContactManager.mainRegion.show(contactsView);
     },
 
