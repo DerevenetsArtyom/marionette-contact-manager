@@ -35,8 +35,8 @@ ContactManager.Controller = Marionette.Controller.extend({
         });
 
         this.listenTo(newContactForm, 'form:submitted', function(attrs) {
-            attrs.id = this._contacts.isEmpty() ? 1 : (_.max(this._contacts.pluck('id')) + 1);
-            this._contacts.add(attrs);
+            attrs.avatar = _.random(1, 15) + '.jpg';
+            this._contacts.create(attrs);
             this.showContacts();
         });
 
