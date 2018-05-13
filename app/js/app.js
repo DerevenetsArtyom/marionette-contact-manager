@@ -11,7 +11,7 @@ ContactManager.addRegions({
 
 // create initializer and prepare data, router and controller
 ContactManager.addInitializer(function(data) {
-    var contacts = new ContactManager.Collections.Contacts(data.contacts);
+    var contacts = new ContactManager.Collections.Contacts();
     var router = new ContactManager.Router();
     var controller = new ContactManager.Controller({
         contacts: contacts,
