@@ -11,6 +11,9 @@ ContactManager.Controller = Marionette.Controller.extend({
         });
 
         this.listenTo(contactsView, 'addContact:clicked', this.newContact);
+        this.listenTo(contactsView, 'itemView:delete:clicked', function () {
+            this._contacts.remove(contactsView.model)
+        });
 
         ContactManager.mainRegion.show(contactsView);
 
