@@ -1,4 +1,4 @@
-ContactManager.Views.ContactForm = Marionette.ItemView.extend({
+ContactManager.Views.ContactForm = Marionette.View.extend({
     template: '#tpl-new-contact',
 
     events: {
