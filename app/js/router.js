@@ -6,7 +6,7 @@ ContactManager.Router = Marionette.AppRouter.extend({
     home: function() {
       this._router.navigate('contacts', {
           trigger: true,
-        replace: true
-        });
+          replace: true
+      });
     }
 });
